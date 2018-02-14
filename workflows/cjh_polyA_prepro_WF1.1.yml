@@ -1,7 +1,7 @@
 # Infile (has to be .fq.gz, mandatory)
 fastqgz:
   class: File
-  path: ./sandbox/testfiles/small_A_seq_test.fq.gz
+  path: ../testfiles/small_A_seq_test.fq.gz
 
 # Optional arguments
 outFileName: #q2a_renamed_valid5p.fa
