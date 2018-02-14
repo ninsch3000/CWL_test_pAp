@@ -1,0 +1,9 @@
+rename: true
+keepUnknown: true
+#verbose: true
+#compress: true
+quality: true
+inputFile:
+  class: File
+  path: ../gzipOutTest.fq
+targetFileName: fq2faOutTest.test.fa

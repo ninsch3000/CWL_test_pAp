@@ -1,0 +1,8 @@
+inputFile:
+  class: File
+  format: http://edamontology.org/format_1929
+  path: ../../workflows/polyA/sandbox/testfiles/small_A_seq_test.fa
+
+targetFileName: "reverse_complement_out_cwl_tool.fa.gz"
+
+compress: true

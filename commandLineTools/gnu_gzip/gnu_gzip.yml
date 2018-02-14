@@ -1,0 +1,11 @@
+decompress: true
+zipFile:
+  class: File
+  path: ../test.fq.gz
+targetFileName: gzipOutTest.test.txt.gz
+#test: true
+#quiet: true
+#list: true
+#force: true
+#verbose: true
+excSpeedParameter:

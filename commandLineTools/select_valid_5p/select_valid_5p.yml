@@ -1,0 +1,6 @@
+inputFile:
+  class: File
+  path: ../../../test_files/small_q2a_renamed.fa
+
+adapter: ....TTT
+targetFileName: small_valid5p_out.fa
