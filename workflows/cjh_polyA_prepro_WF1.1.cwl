@@ -42,6 +42,21 @@ inputs:
   adapter5p: string?
 
 outputs:
+  result1:
+    type: File
+    outputSource: unzip_fastq/zipResult
+  result2:
+    type: File
+    outputSource: fastq_to_fasta/q2aResult
+  result3:
+    type: File
+    outputSource: select_valid_5p/valid5pResult
+  result4:
+    type: File
+    outputSource: cutadapt/cutadapt_fasta_out
+  result5:
+    type: File
+    outputSource: reverse_complement/reverse_complement_out
   result:
     type: File
     #format: edam:format_1929
@@ -50,17 +65,17 @@ outputs:
 
 steps:
   unzip_fastq:
-    run: ../../commandLineTools/gnu_gzip/gnu_gzip.cwl
+    run: ../commandLineTools/gnu_gzip/gnu_gzip.cwl
     in:
       zipFile: fastqgz
       decompress:
         default: true
       targetFileName:
-        default: "unzipped_fastq_out_cwl_workflow.fq"
+        default: "ungzip_fastq.fq"
     out: [zipResult]
 
   fastq_to_fasta:
-    run: ../../commandLineTools/fastq_to_fasta/fastq_to_fasta.cwl
+    run: ../commandLineTools/fastq_to_fasta/fastq_to_fasta.cwl
     in:
       inputFile:
         source: unzip_fastq/zipResult
@@ -71,24 +86,24 @@ steps:
       keepUnknown:
         default: false
       targetFileName:
-        default: "fastq2fasta_out_cwl_workflow.fa"
+        default: "fastq2fasta_ungzip.fa"
     out: [q2aResult]
 
   select_valid_5p:
-    run: ../../commandLineTools/select_valid_5p/select_valid_5p.cwl
+    run: ../commandLineTools/select_valid_5p/select_valid_5p.cwl
     in:
       inputFile: fastq_to_fasta/q2aResult
       adapter:
         source: adapter5p
         default: "....TTT"
       targetFileName:
-        default: "valid5p_out_cwl_workflow.fa"
+        default: "valid5p_fq2fa_ungzip.fa"
       zippedInput:
         default: false
     out: [valid5pResult]
 
   cutadapt:
-    run: ../../commandLineTools/cutadapt/cutadapt.cwl
+    run: ../commandLineTools/cutadapt/cutadapt.cwl
     in:
       inputFile: select_valid_5p/valid5pResult
       adapter:
@@ -96,29 +111,31 @@ steps:
       minimumLength:
         default: 4 # Override tool's default:0 to avoid empty lines in output file
       targetFileName:
-        default: "cutadapt_out_cwl_workflow.fa"
+        default: "cutadapt_valid5p_fq2fa_ungzip.fa"
         #source: outFileName
     out: [cutadapt_fasta_out]
 
   reverse_complement:
-    run: ../../commandLineTools/fastx_reverse_complement/fastx_reverse_complement.cwl
+    run: ../commandLineTools/fastx_reverse_complement/fastx_reverse_complement.cwl
     in:
       inputFile: cutadapt/cutadapt_fasta_out
       compress:
         default: false
       targetFileName:
-        default: "reverse_complement_out_cwl_workflow.fa"
+        default: "revComp_cutadapt_valid5p_fq2fa_ungzip.fa"
         #source: outFileName
     out: [reverse_complement_out]
 
   zip_fasta:
-    run: ../../commandLineTools/gnu_gzip/gnu_gzip.cwl
+    run: ../commandLineTools/gnu_gzip/gnu_gzip.cwl
     in:
       zipFile: reverse_complement/reverse_complement_out
       decompress:
         default: false
+      no-name: # Don't include header and timestamp in zipped file, so that md5sum can be compared for the testruns.
+        default: true
       targetFileName:
-        default: "valid5p_cutadapt_revComp_out_cwl_workflow.fa.gz"
+        default: "revComp_cutadapt_valid5p_fq2fa_ungzip.fa.gz"
     out: [zipResult]
 
 ############################
