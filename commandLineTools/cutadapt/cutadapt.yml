@@ -67,8 +67,9 @@ minimumLength: 4
 ### Necessary Inputs ###
 inputFile:
   class: File
-  path: ../../../polyA_prepro/cwl/tests/valid5p_out_cwl_tool.fa
+  # Path has to be relative to location of this yaml file
+  path: ../../testfiles_Aseq_cl/valid5p_fq2fa_ungzip.fa
   #path: ../gzipOutTest.fq
   #class: File
   #path: ../fasta_test_cut_adapt_2.fa
-targetFileName: cutadapt_out_cwl_tool.fa
+targetFileName: cutadapt_valid5p_fq2fa_ungzip.fa

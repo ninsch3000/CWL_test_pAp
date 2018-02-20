@@ -1,8 +1,9 @@
 inputFile:
   class: File
   format: http://edamontology.org/format_1929
-  path: ../../testfiles/small_A_seq_test.fa
+  # Path has to be relative to location of this yaml file
+  path: ../../testfiles_Aseq_cl/cutadapt_valid5p_fq2fa_ungzip.fa
 
-targetFileName: "reverse_complement_out_cwl_tool.fa.gz"
+targetFileName: "revComp_cutadapt_valid5p_fq2fa_ungzip.fa"
 
-compress: true
+compress: false
