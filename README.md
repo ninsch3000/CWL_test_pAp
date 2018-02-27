@@ -13,10 +13,16 @@ Clone the repo:
 `git clone ssh://git@git.scicore.unibas.ch:2222/cwl/CWL_test_pAp.git`  
 or if you're not in the zavolab circle of trust, try:  
 `git clone https://github.com/ninsch3000/CWL_test_pAp.git`  
+In `workflows/cjh_polyA_prepro_WF1.1.yml`:  
+```
+# Path to your local version of the PolyA Preprocessing pipeline
+path2localRepo: /ABSOLUTE/PATH/TO/CWL_test_pAp
+```
+
 From your destination folder run:  
 `cwltool /PATH/TO/CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl /PATH/TO/CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml`  
 
-If you don't have docker but singularity, you need to install cwl from it's sinularity-support branch. Then run with --singularity.
+If you don't have docker but singularity, you need to run cwltool with `--singularity`.
 
 ## Steps
   - gnu_zip fastq
