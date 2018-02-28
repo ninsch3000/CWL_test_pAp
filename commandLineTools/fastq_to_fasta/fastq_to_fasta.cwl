@@ -2,25 +2,34 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: fastq_to_fasta
+
+label: "FASTQ to FASTA"
+
 doc: |
-  executes the fastq_to_fasta command of FASTX implemented for version 0.0.14:
+  executes the fastq_to_fasta command of FASTX implemented for version 0.0.13:
   optional args:
   [rename, keepUnknown, verbose, compress]
   fixed args:
   [inputFile, targetFileName]
-  This commandline tool transforms a fastaq into a fasta file (and if wanted slightly change it)
 
-#hints:
-#  DockerRequirement:
-#    dockerPull: fastx
+
+baseCommand: fastq_to_fasta
 
 stdout: $(inputs.targetFileName)
-#passing arguments via boolean: allows to specify the possible arguments
 
 requirements:
 #  - $import: runtimeSettingsMedium.yml
   - class: InlineJavascriptRequirement
+
+hints:
+  #- class: DockerRequirement
+  #  dockerPull: cjh4zavolab/fastx
+  - class: SoftwareRequirement
+    packages:
+      fastx-toolkit:
+        specs: ["http://identifiers.org/RRID:SCR_005534"]
+        version: ["0.0.13"]
+
 
 inputs:
   ### Optional Inputs ###
@@ -88,30 +97,34 @@ outputs:
     type: stdout
     format: edam:format_1929
 
-#usage: fastq_to_fasta [-h] [-r] [-n] [-v] [-z] [-i INFILE] [-o OUTFILE]
-#Part of FASTX Toolkit 0.0.14 by A. Gordon (assafgordon@gmail.com)
-#
-#   [-h]         = This helpful help screen.
-#   [-r]         = Rename sequence identifiers to numbers.
-#   [-n]         = keep sequences with unknown (N) nucleotides.
-#                  Default is to discard such sequences.
-#   [-v]         = Verbose - report number of sequences.
-#                  If [-o] is specified,  report will be printed to STDOUT.
-#                  If [-o] is not specified (and output goes to STDOUT),
-#                  report will be printed to STDERR.
-#   [-z]         = Compress output with GZIP.
-#   [-i INFILE]  = FASTA/Q input file. default is STDIN.
-#   [-o OUTFILE] = FASTA output file. default is STDOUT.
+doc: |
+  usage: fastq_to_fasta [-h] [-r] [-n] [-v] [-z] [-i INFILE] [-o OUTFILE]
+  Part of FASTX Toolkit 0.0.14 by A. Gordon (assafgordon@gmail.com)
+
+    [-h]         = This helpful help screen.
+    [-r]         = Rename sequence identifiers to numbers.
+    [-n]         = keep sequences with unknown (N) nucleotides.
+                    Default is to discard such sequences.
+    [-v]         = Verbose - report number of sequences.
+                    If [-o] is specified,  report will be printed to STDOUT.
+                    If [-o] is not specified (and output goes to STDOUT),
+                    report will be printed to STDERR.
+    [-z]         = Compress output with GZIP.
+    [-i INFILE]  = FASTA/Q input file. default is STDIN.
+    [-o OUTFILE] = FASTA output file. default is STDOUT.
 
 ############################
-#s:author:
-#  - class: s:Person
-#    s:name: Students
+s:dateModified: "2018-02-28"
+s:author:
+  - class: s:Person
+    s:name: Students
+  - class: s:Person
+    s:name: Christina J. Herrmann
 
 $namespaces:
-#  s: https://schema.org/
+  s: https://schema.org/
   edam: http://edamontology.org/
 
 $schemas:
-# - https://schema.org/docs/schema_org_rdfa.html
+ - https://schema.org/docs/schema_org_rdfa.html
  - http://edamontology.org/EDAM_1.18.owl

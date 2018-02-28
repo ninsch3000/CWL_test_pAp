@@ -1,0 +1,6 @@
+FROM alpine:3.7
+
+# Update pkg manager and get full version of gzip
+RUN apk update && apk add gzip
+
+LABEL maintainer "christina.herrmann@unibas.ch"

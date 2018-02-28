@@ -5,6 +5,3 @@ inputFile:
 
 adapter: ....TTT
 targetFileName: valid5p_out.fa
-
-valid5p_exec_path: #select_valid_5p/rs-filter-by-5p-adapter.keep5pAdapter.pl
-repo_path: /home/christina/Work/CWL_projects/cwl_repo

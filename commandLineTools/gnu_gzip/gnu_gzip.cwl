@@ -13,9 +13,9 @@ requirements:
 #   - $import: runtimeSettingsMedium.yml
   - class: InlineJavascriptRequirement
 
-#hints:
-#  DockerRequirement:
-#    dockerPull: ubuntu:14.04                                                                         #the system temporary directory which
+hints:
+  - class: DockerRequirement
+    dockerPull: gzip:1                                                                         #the system temporary directory which
                                                                             #must be located at /tmp.
 stdout: $(inputs.targetFileName)
 #passing arguments via boolean: allows to specify the possible arguments

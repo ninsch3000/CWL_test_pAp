@@ -35,7 +35,6 @@ hints:
         version: ["1.15"]
 
 inputs:
-  path2localRepo: string
   fastqgz:
     type: File
     label: Reads in .fq.gz format
@@ -62,7 +61,6 @@ outputs:
     type: File
     #format: edam:format_1929
     outputSource: zip_fasta/zipResult
-    #outputSource: cutadapt/cutadapt_fasta_out
 
 steps:
   unzip_fastq:
@@ -93,10 +91,6 @@ steps:
   select_valid_5p:
     run: ../commandLineTools/select_valid_5p/select_valid_5p.cwl
     in:
-      repo_path:
-        source: path2localRepo
-      valid5p_exec_path:
-        default: "select_valid_5p/rs-filter-by-5p-adapter.keep5pAdapter.pl"
       inputFile: fastq_to_fasta/q2aResult
       adapter:
         source: adapter5p

@@ -6,7 +6,7 @@ class: CommandLineTool
 label: "FASTQ/A Reverse Complement"
 
 doc: |
-  executes the fastx_reverse_complement command of FASTX implemented for version 0.0.14:
+  executes the fastx_reverse_complement command of FASTX implemented for version 0.0.13:
   optional args:
   [compress]
   fixed args:
@@ -14,7 +14,7 @@ doc: |
   Producing the Reverse-complement of each sequence in a FASTQ/FASTA file.
 
   usage: fastx_reverse_complement [-h] [-r] [-z] [-v] [-i INFILE] [-o OUTFILE]
-  Part of FASTX Toolkit 0.0.14 by A. Gordon (assafgordon@gmail.com)
+  Part of FASTX Toolkit 0.0.13 by A. Gordon (assafgordon@gmail.com)
 
   	   [-h]         = This helpful help screen.
   	   [-z]         = Compress output with GZIP.
@@ -29,7 +29,6 @@ requirements:
 #  - $import: runtimeSettingsMedium.yml
   - class: InlineJavascriptRequirement
 
-
 hints:
   - class: DockerRequirement
     dockerPull: cjh4zavolab/fastx
@@ -39,7 +38,7 @@ hints:
     packages:
       fastx-toolkit:
         specs: ["http://identifiers.org/RRID:SCR_005534"]
-        version: ["0.0.14"]
+        version: ["0.0.13"]
 
 inputs:
   ### Optional Inputs ###

@@ -22,10 +22,9 @@ doc: |
 
   allowed input file formats:  [fastq, fasta, .gz, .xz, .bz2]
 
-#hints:
-#  DockerRequirement:
-#     dockerPull: /scicore/home/zavolan/schurrj/clipz_cwl/sandbox/commandLineTools/cutadapt.img
-#    dockerPull: docker://genomicpariscentre/cutadapt
+hints:
+  - class: DockerRequirement
+    dockerPull: cyverseuk/cutadapt
 
 requirements:
 #  - $import: runtimeSettingsMedium.yml
