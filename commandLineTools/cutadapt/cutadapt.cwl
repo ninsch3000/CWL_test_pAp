@@ -24,7 +24,7 @@ doc: |
 
 hints:
   - class: DockerRequirement
-    dockerPull: cyverseuk/cutadapt
+    dockerPull: cjh4zavolab/cutadapt:1.16
 
 requirements:
 #  - $import: runtimeSettingsMedium.yml

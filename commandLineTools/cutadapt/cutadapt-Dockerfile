@@ -1,0 +1,9 @@
+FROM ubuntu:16.04
+
+LABEL ubuntu.version="16.04" cutadapt.version="1.16" \
+  maintainer="christina.herrmann@unibas.ch"
+
+RUN apt-get update && apt-get -yy install python-pip \
+  && pip install cutadapt==1.16
+
+WORKDIR /data/

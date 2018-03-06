@@ -22,8 +22,8 @@ requirements:
   - class: InlineJavascriptRequirement
 
 hints:
-  #- class: DockerRequirement
-  #  dockerPull: cjh4zavolab/fastx
+  - class: DockerRequirement
+    dockerPull: cjh4zavolab/fastx:0.0.14
   - class: SoftwareRequirement
     packages:
       fastx-toolkit:

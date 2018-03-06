@@ -31,7 +31,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cjh4zavolab/fastx
+    dockerPull: cjh4zavolab/fastx:0.0.14
     #dockerFile: >
     #  $import: fastx-Dockerfile
   - class: SoftwareRequirement

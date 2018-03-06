@@ -15,7 +15,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: gzip:1                                                                         #the system temporary directory which
+    dockerPull: cjh4zavolab/gzip:1                                                                         #the system temporary directory which
                                                                             #must be located at /tmp.
 stdout: $(inputs.targetFileName)
 #passing arguments via boolean: allows to specify the possible arguments

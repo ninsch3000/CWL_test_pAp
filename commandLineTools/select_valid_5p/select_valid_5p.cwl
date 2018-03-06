@@ -19,7 +19,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: select_valid_5p:1
+    dockerPull: cjh4zavolab/select_valid_5p:1
 
 inputs:
   inputFile:
