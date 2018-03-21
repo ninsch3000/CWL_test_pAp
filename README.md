@@ -6,7 +6,7 @@ Sequencing data are converted to fasta, checked for valid 5'' and 3'' ends and r
 ## requirements
   - cwl-runner
   - docker/singularity
-> Note: Currently only the docker requirement for fastx_reverse_complement is implemented. Other steps will follow. For now you need gzip, cutadapt, fastx_toolkit
+
 
 ## How to
 Clone the repo:  
