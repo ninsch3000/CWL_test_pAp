@@ -1,6 +1,6 @@
 # To use container for polyA pipeline:
-# docker build --tag pAp_cwl:1 .
-# docker run --privileged --interactive --tty pAp_cwl:1 /bin/bash`
+# docker build --tag pap_cwl:2 .
+# docker run --privileged --interactive --tty pap_cwl:2 /bin/bash`
 # privileged flag is required for singularity to run properly
 
 FROM debian:9.3
@@ -11,7 +11,7 @@ ENV pAp_VERSION 0.1.0
 RUN  apt-get update \
   && apt-get install --yes python python-pip build-essential wget \
       squashfs-tools git-all \
-  && mkdir home \
+#  && mkdir home \
   && cd home \
   && wget https://github.com/singularityware/singularity/releases/download/$SINGU_VERSION/singularity-$SINGU_VERSION.tar.gz \
   && tar xvf singularity-$SINGU_VERSION.tar.gz \
@@ -24,15 +24,19 @@ RUN  apt-get update \
   && cd cwltool  \
   && pip install . \
   && cd .. \
-  && wget https://github.com/ninsch3000/CWL_test_pAp/archive/v$pAp_VERSION.tar.gz
-  && tar -xvf v$pAp_VERSION.tar.gz
-  && cd CWL_test_pAp-$pAp_VERSION
+  && git clone https://github.com/ninsch3000/CWL_test_pAp.git \
+  && mkdir test \
+  && cd test/ \
+#  && wget https://github.com/ninsch3000/CWL_test_pAp/archive/v$pAp_VERSION.tar.gz \
+#  && tar -xvf v$pAp_VERSION.tar.gz \
+#  && cd CWL_test_pAp-$pAp_VERSION
 
-ENTRYPOINT???
-WORKDIR??
-  git pull
-  cd ../test
-  cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
+#ENTRYPOINT???
+#WORKDIR??
+# html5lib?
+#  git pull
+#  cd ../test
+#  cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
 
 LABEL debian.version="9.3" \
   maintainer="christina.herrmann@unibas.ch"
