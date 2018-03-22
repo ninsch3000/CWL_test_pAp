@@ -32,7 +32,7 @@ If you don't have docker but singularity, you need to run cwltool with `--singul
   - fastx_reverse_complement
   - gzip
 
-![CWL viewer graph]( https://github.com/ninsch3000/CWL_test_pAp/blob/master/pAp_graph.png )
+![CWL viewer graph]( ./pAp_graph.png )
 
 For more details browse the graph on [CWL viewer](https://view.commonwl.org/workflows/github.com/ninsch3000/CWL_test_pAp/blob/master/workflows/cjh_polyA_prepro_WF1.1.cwl#)
 
