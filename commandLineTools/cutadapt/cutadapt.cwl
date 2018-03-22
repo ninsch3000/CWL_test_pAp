@@ -550,7 +550,7 @@ inputs:
   ### Necessary Inputs ###
   inputFile: #tested
     type: File
-    format: [edam:format_2545 , edam:format_2546]      #FASTQ-like format, FASTA-like
+    #format: [edam:format_2545 , edam:format_2546]      #FASTQ-like format, FASTA-like
     inputBinding:
       position: 100
     doc: |
