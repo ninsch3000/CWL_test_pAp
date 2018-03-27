@@ -1,5 +1,5 @@
 # To use container for polyA pipeline:
-# docker pull cjh4zavolab/cwl_test_pap:1 (OR, not recommended: docker build --tag cwl_test_pap:2 .)
+# docker pull cjh4zavolab/cwl_test_pap:1 (OR, not recommended: docker build -t cwl_test_pap:4 -f pApContainer-Dockerfile .)
 # docker run --privileged --interactive --tty cjh4zavolab/cwl_test_pap:1 /bin/bash (privileged flag is required for singularity to run properly)
 # cd home/test/
 # cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
@@ -7,12 +7,14 @@
 FROM debian:9.3
 
 ENV SINGU_VERSION 2.4.2
-ENV pAp_VERSION 0.1.0
+ENV pAp_VERSION 0.1.201803271400
+
+WORKDIR /home
 
 RUN  apt-get update \
   && apt-get install --yes python python-pip build-essential wget \
-      squashfs-tools git-all \
-  && cd home \
+      squashfs-tools git-all nodejs\
+  && pip install html5lib \
   && wget https://github.com/singularityware/singularity/releases/download/$SINGU_VERSION/singularity-$SINGU_VERSION.tar.gz \
   && tar xvf singularity-$SINGU_VERSION.tar.gz \
   && cd singularity-$SINGU_VERSION \
@@ -23,6 +25,13 @@ RUN  apt-get update \
   && git clone https://github.com/common-workflow-language/cwltool.git \
   && cd cwltool  \
   && pip install . \
+  && CWL_VERSION=$(cwltool --version | cut -d' ' -f 2 | cut -d'.' -f 3) \
+  && cd .. \
+  && git clone https://github.com/BD2KGenomics/toil.git \
+  && cd toil \
+# Replace toil's default cwltool version with current one
+  && sed -ri "s/cwltool==1\.0\.[0-9]{14}/cwltool==1\.0\.$CWL_VERSION/" setup.py \
+  && pip install .[cwl] \
   && cd .. \
   && git clone https://github.com/ninsch3000/CWL_test_pAp.git \
   && mkdir test \
@@ -32,9 +41,6 @@ RUN  apt-get update \
 #  && cd CWL_test_pAp-$pAp_VERSION
 
 #ENTRYPOINT???
-#WORKDIR??
-# html5lib?
-#  git pull
 #  cd ../test
 #  cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
 
