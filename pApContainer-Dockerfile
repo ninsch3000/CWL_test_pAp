@@ -1,7 +1,8 @@
 # To use container for polyA pipeline:
-# docker build --tag pap_cwl:2 .
-# docker run --privileged --interactive --tty pap_cwl:2 /bin/bash`
-# privileged flag is required for singularity to run properly
+# docker pull cjh4zavolab/cwl_test_pap:1 (OR, not recommended: docker build --tag cwl_test_pap:2 .)
+# docker run --privileged --interactive --tty cjh4zavolab/cwl_test_pap:1 /bin/bash (privileged flag is required for singularity to run properly)
+# cd home/test/
+# cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
 
 FROM debian:9.3
 
@@ -11,7 +12,6 @@ ENV pAp_VERSION 0.1.0
 RUN  apt-get update \
   && apt-get install --yes python python-pip build-essential wget \
       squashfs-tools git-all \
-#  && mkdir home \
   && cd home \
   && wget https://github.com/singularityware/singularity/releases/download/$SINGU_VERSION/singularity-$SINGU_VERSION.tar.gz \
   && tar xvf singularity-$SINGU_VERSION.tar.gz \
