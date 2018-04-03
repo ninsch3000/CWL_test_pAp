@@ -1,8 +1,8 @@
 # To use container for polyA pipeline:
-# docker pull cjh4zavolab/cwl_test_pap:1 (OR, not recommended: docker build -t cwl_test_pap:4 -f pApContainer-Dockerfile .)
-# docker run --privileged --interactive --tty cjh4zavolab/cwl_test_pap:1 /bin/bash (privileged flag is required for singularity to run properly)
+# docker pull cjh4zavolab/cwl_test_pap:2
+# docker run --privileged --interactive --tty cjh4zavolab/cwl_test_pap:2 /bin/bash (privileged flag is required for singularity to run properly)
 # cd home/test/
-# cwltool --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
+# toil-cwl-runner --singularity ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.cwl ../CWL_test_pAp/workflows/cjh_polyA_prepro_WF1.1.yml
 
 FROM debian:9.3
 

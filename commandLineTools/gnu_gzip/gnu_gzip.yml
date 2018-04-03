@@ -1,7 +1,7 @@
 decompress: true
 zipFile:
   class: File
-  path: ../test.fq.gz
+  path: ../../tests/testfiles_Aseq_cl/A_seq_test.fq.gz
 targetFileName: gzipOutTest.test.txt.gz
 #test: true
 #quiet: true

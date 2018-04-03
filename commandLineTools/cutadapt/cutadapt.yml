@@ -68,7 +68,7 @@ minimumLength: 4
 inputFile:
   class: File
   # Path has to be relative to location of this yaml file
-  path: ../../testfiles_Aseq_cl/valid5p_fq2fa_ungzip.fa
+  path: ../../tests/testfiles_Aseq_cl/valid5p_fq2fa_ungzip.fa
   #path: ../gzipOutTest.fq
   #class: File
   #path: ../fasta_test_cut_adapt_2.fa

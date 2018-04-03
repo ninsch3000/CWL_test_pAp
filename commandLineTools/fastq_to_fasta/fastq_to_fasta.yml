@@ -1,7 +1,7 @@
 inputFile:
   class: File
   # Path has to be relative to location of this yaml file
-  path: ../../testfiles_Aseq_cl/ungzip_fastq.fq
+  path: ../../tests/testfiles_Aseq_cl/ungzip_fastq.fq
 
 rename: true
 keepUnknown: false

@@ -6,7 +6,7 @@ class: CommandLineTool
 label: "FASTQ to FASTA"
 
 doc: |
-  executes the fastq_to_fasta command of FASTX implemented for version 0.0.13:
+  executes the fastq_to_fasta command of FASTX implemented for version 0.0.14:
   optional args:
   [rename, keepUnknown, verbose, compress]
   fixed args:
@@ -15,11 +15,10 @@ doc: |
 
 baseCommand: fastq_to_fasta
 
-stdout: $(inputs.targetFileName)
-
 requirements:
 #  - $import: runtimeSettingsMedium.yml
   - class: InlineJavascriptRequirement
+
 
 hints:
   - class: DockerRequirement
@@ -28,7 +27,7 @@ hints:
     packages:
       fastx-toolkit:
         specs: ["http://identifiers.org/RRID:SCR_005534"]
-        version: ["0.0.13"]
+        version: ["0.0.14"]
 
 
 inputs:
@@ -96,6 +95,8 @@ outputs:
   q2aResult:
     type: stdout
     format: edam:format_1929
+
+stdout: $(inputs.inputFile.nameroot).fa
 
 doc: |
   usage: fastq_to_fasta [-h] [-r] [-n] [-v] [-z] [-i INFILE] [-o OUTFILE]
