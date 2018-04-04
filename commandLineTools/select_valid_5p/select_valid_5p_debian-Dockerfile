@@ -1,0 +1,9 @@
+# Set the base image to debian
+FROM debian:9.3
+
+# Perl 5 version 24 already installed in debian 9.3
+
+# Add filter-adapter-script to location in PATH
+COPY rs-filter-by-5p-adapter.keep5pAdapter.pl /usr/bin
+
+LABEL maintainer "christina.herrmann@unibas.ch"
